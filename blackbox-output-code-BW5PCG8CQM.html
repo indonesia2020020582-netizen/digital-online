@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ડિજિટલ ઓનલાઇન થરાડ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Gujarati:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Sans Gujarati', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: #eaf3ff;
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 80, 214, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        .navbar .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+        }
+        .navbar ul {
+            list-style: none;
+            display: flex;
+        }
+        .navbar ul li {
+            margin-left: 2rem;
+        }
+        .navbar ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .navbar ul li a:hover {
+            color: #eaf3ff;
+        }
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #0050d6, #007aff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://via.placeholder.com/1920x1080/0050d6/ffffff?text=Digital+Online+Tharad+Banner') no-repeat center center/cover;
+            opacity: 0.3;
+        }
+        .hero-content {
+            position: relative;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            animation: fadeInUp 1s ease-out;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: #eaf3ff;
+        }
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .services {
+            text-align: center;
+        }
+        .services h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #0050d6;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .service-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        .service-card i {
+            font-size: 3rem;
+            color: #007aff;
+            margin-bottom: 1rem;
+        }
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #0050d6;
+        }
+        .apply-form {
+            background: #fff;
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .apply-form h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #0050d6;
+        }
+        .apply-form form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .apply-form input, .apply-form button {
+            padding: 1rem;
+            border-radius: 10px;
+            border: none;
+            font-size: 1rem;
+        }
+        .apply-form input {
+            background: #eaf3ff;
+        }
+        .apply-form button {
+            background: #007aff;
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .apply-form button:hover {
+            background: #0050d6;
+        }
+        .whatsapp-booking {
+            text-align: center;
+            background: #007aff;
+            color: #fff;
+            padding: 3rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+        .whatsapp-booking h2 {
+            margin-bottom: 2rem;
+        }
+        .whatsapp-booking a {
+            display: inline-block;
+            background: #25d366;
+            color: #fff;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        .whatsapp-booking a:hover {
+            background: #128c7e;
+        }
+        .contact {
+            text-align: center;
+        }
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #0050d6;
+        }
+        .contact p {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .footer {
+            background: #0050d6;
+            color: #fff;
+            text-align: center;
+            padding: 2rem;
+            font-weight: 600;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @media (max-width: 768px) {
+            .navbar ul {
+                display: none;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .section {
+                padding: 3rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">ડિજિટલ ઓનલાઇન થરાડ</div>
+        <ul>
+            <li><a href="#hero">હોમ</a></li>
+            <li><a href="#services">સેવાઓ</a></li>
+            <li><a href="#apply">અરજી</a></li>
+            <li><a href="#contact">સંપર્ક</a></li>
+        </ul>
+    </nav>
+
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <h1>ડિજિટલ ઓનલાઇન થરાડ</h1>
+            <p>તમામ ડિજિટલ અને સરકારી સેવાઓ એક જ જગ્યાએ</p>
+        </div>
+    </section>
+
+    <section id="services" class="section services">
+        <h2>અમારી સેવાઓ</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-passport"></i>
+                <h3>પાસપોર્ટ અરજી</h3>
+                <p>સરળ અને ઝડપી પાસપોર્ટ સેવાઓ</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-graduation-cap"></i>
+                <h3>સ્કોલરશિપ</h3>
+                <p>શૈક્ષણિક સહાય અને સ્કોલરશિપ સેવાઓ</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-user-shield"></i>
+                <h3>પોલીસ ભરતી ફોર્મ</h3>
+                <p>પોલીસ ભરતી માટેના ફોર્મ અને માર્ગદર્શન</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-id-card"></i>
+                <h3>આધાર/પેન સેવાઓ</h3>
+                <p>આધાર અને પેન કાર્ડ સંબંધિત સેવાઓ</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-certificate"></i>
+                <h3>આવક/જાતિ પ્રમાણપત્ર</h3>
+                <p>આવક અને જાતિ પ્રમાણપત્ર સેવાઓ</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-file-alt"></i>
+                <h3>એલસી/માર્કશીટ</h3>
+                <p>શાળા છોડયા અને માર્કશીટ સેવાઓ</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-university"></i>
+                <h3>બેંક ઓનલાઇન કામ</h3>
+                <p>બેંકિંગ સંબંધિત ઓનલાઇન સેવાઓ</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="apply" class="section">
+        <div class="apply-form">
+            <h2>અરજી કરો</h2>
+            <form action="#" method="post">
+                <input type="text" placeholder="નામ" required>
+                <input type="email" placeholder="ઇમેઇલ" required>
+                <input type="tel" placeholder="મોબાઇલ નંબર" required>
+                <input type="text" placeholder="સેવા પસંદ કરો" required>
+                <button type="submit">હવે અરજી કરો</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="section whatsapp-booking">
+        <h2>વ્હોટ્સએપ બુકિંગ</h2>
+        <p>અમારી સેવાઓ માટે વ્હોટ્સએપ દ્વારા બુકિંગ કરો</p>
+        <a href="https://wa.me/1234567890?text=હેલો, હું ડિજિટલ ઓનલાઇન થરાડની સેવાઓ વિશે જાણવા માંગું છું" target="_blank">
+            <i class="fab fa-whatsapp"></i> વ્હોટ્સએપ પર સંપર્ક કરો
+        </a>
+    </section>
+
+    <section id="contact" class="section contact">
+        <h2>સંપર્ક કરો</h2>
+        <p><i class="fas fa-phone"></i> મોબાઇલ નંબર: +91 12345 67890</p>
+        <p><i class="fas fa-map-marker-alt"></i> સરનામું: થરાડ, ગુજરાત</p>
+    </section>
+
+    <footer class="footer">
+        <p>ડિજિટલ ઓનલાઇન થરાડ – તમામ સેવાઓ ઉપલબ્ધ</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('.navbar a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
